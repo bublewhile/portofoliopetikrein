@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rein — Portofolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #ffffff;
+      color: #6b4c4a;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --pink: #e8b4b8;
+      --pink-light: #f5d6d9;
+      --pink-dark: #d4a0a5;
+      --maroon: #8b5e5c;
+      --maroon-light: #a97c7a;
+      --cream: #fdf5f0;
+      --brown-soft: #b8958a;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.02);
+      }
+    }
+
+    .animate-slideLeft {
+      animation: slideInLeft 0.8s ease forwards;
+    }
+
+    .animate-slideRight {
+      animation: slideInRight 0.8s ease forwards;
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid #f5e0db;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--maroon), var(--pink-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo span {
+      background: linear-gradient(135deg, var(--pink), var(--maroon-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #b8958a;
+      font-size: 1rem;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--pink), var(--maroon));
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--maroon);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--maroon), var(--pink-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 56px;
+      border-left: 5px solid var(--pink);
+      padding-left: 24px;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      min-height: 85vh;
+    }
+
+    .hero-text {
+      flex: 1.2;
+      animation: slideInLeft 0.8s ease forwards;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--maroon), var(--pink-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, var(--pink), var(--maroon-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .typing {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--pink-dark);
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fffaf8;
+      border-radius: 60px;
+      padding: 10px 24px;
+      font-size: 0.95rem;
+      color: var(--maroon-light);
+      margin-bottom: 28px;
+      border: 1px solid #f5ded8;
+      transition: 0.3s;
+    }
+
+    .badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(232, 180, 184, 0.2);
+    }
+
+    .hero-text p {
+      color: #c4a29a;
+      max-width: 500px;
+      margin-bottom: 36px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, var(--pink-dark), var(--maroon-light));
+    }
+
+    .hero-img {
+      flex: 0.8;
+      text-align: center;
+      animation: slideInRight 0.8s ease forwards;
+    }
+
+    .hero-img img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 20px 40px rgba(232, 180, 184, 0.25);
+      transition: 0.4s;
+    }
+
+    .hero-img img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .skill-card {
+      background: #fffaf8;
+      border-radius: 32px;
+      padding: 36px;
+      flex: 1;
+      min-width: 260px;
+      border: 1px solid #f5ded8;
+      transition: 0.4s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .skill-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(232, 180, 184, 0.15);
+      border-color: var(--pink);
+    }
+
+    .skill-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--maroon), var(--pink-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .skill-tag {
+      background: linear-gradient(135deg, #fff5f2, #fffaf8);
+      padding: 8px 20px;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--maroon-light);
+      transition: 0.3s;
+    }
+
+    .skill-tag:hover {
+      background: linear-gradient(135deg, var(--pink-light), var(--pink));
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Education */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .edu-item {
+      background: #fffaf8;
+      border-radius: 28px;
+      padding: 28px 36px;
+      border-left: 6px solid var(--pink);
+      transition: 0.4s;
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    .edu-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .edu-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(232, 180, 184, 0.1);
+    }
+
+    .edu-item h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--maroon);
+    }
+
+    .edu-meta {
+      font-size: 0.9rem;
+      color: var(--pink-dark);
+      margin-top: 10px;
+      display: flex;
+      gap: 28px;
+    }
+
+    /* Projects Card - BENTUK BARU: soft blob / pill shape */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .project-card {
+      background: #fffaf8;
+      border-radius: 48px 48px 48px 24px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 2px solid #f5ded8;
+      text-decoration: none;
+      display: block;
+      opacity: 0;
+      transform: translateY(30px);
+      position: relative;
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px) rotate(0.5deg);
+      border-color: var(--pink);
+      box-shadow: 0 25px 45px rgba(232, 180, 184, 0.25);
+    }
+
+    .project-img {
+      height: 200px;
+      background: linear-gradient(135deg, #fff0ec, #fce8e4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-img img {
+      transform: scale(1.08);
+    }
+
+    .project-info {
+      padding: 28px;
+    }
+
+    .project-info h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--maroon), var(--pink-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .project-info p {
+      font-size: 0.9rem;
+      color: #c4a29a;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .project-techs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-techs span {
+      background: linear-gradient(135deg, #fff5f2, #fffaf8);
+      padding: 6px 16px;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--maroon-light);
+      transition: 0.3s;
+    }
+
+    .project-techs span:hover {
+      background: linear-gradient(135deg, var(--pink-light), var(--pink));
+      color: white;
+    }
+
+    /* Certificates Card - BENTUK BARU: rounded with dotted border + soft shadow */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .cert-card {
+      background: #fffaf8;
+      border-radius: 32px;
+      padding: 24px;
+      transition: all 0.4s ease;
+      border: 2px dashed #f5ded8;
+      opacity: 0;
+      transform: translateY(30px);
+      position: relative;
+    }
+
+    .cert-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-8px);
+      border: 2px dashed var(--pink);
+      background: #fff;
+      box-shadow: 0 20px 35px rgba(232, 180, 184, 0.15);
+    }
+
+    .cert-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 24px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #fff0ec, #fce8e4);
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .cert-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--maroon);
+      line-height: 1.4;
+    }
+
+    .cert-card p {
+      font-size: 0.75rem;
+      color: var(--pink-dark);
+      margin-top: 8px;
+    }
+
+    .cert-hidden {
+      display: none;
+    }
+
+    .view-btn {
+      background: transparent;
+      background: linear-gradient(135deg, white, #fffaf8);
+      color: var(--maroon);
+      border: 2px solid var(--pink);
+      padding: 14px 42px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 48px;
+      transition: 0.3s;
+    }
+
+    .view-btn:hover {
+      background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Contact */
+    .form-container {
+      background: #fffaf8;
+      padding: 48px;
+      border-radius: 48px;
+      border: 1px solid #f5ded8;
+      transition: 0.4s;
+    }
+
+    .form-container:hover {
+      box-shadow: 0 20px 40px rgba(232, 180, 184, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 28px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--maroon);
+      margin-bottom: 10px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 60px;
+      border: 1px solid #f5ded8;
+      font-family: inherit;
+      background: white;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .form-group textarea {
+      border-radius: 28px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, var(--pink-dark), var(--maroon-light));
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      border-top: 1px solid #f5ded8;
+      color: #d4b0a8;
+      font-size: 0.85rem;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 20px;
+    }
+
+    .socials a {
+      background: linear-gradient(135deg, var(--pink-light), var(--pink));
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--maroon);
+      font-size: 1.4rem;
+      transition: 0.4s;
+    }
+
+    .socials a:hover {
+      background: linear-gradient(135deg, var(--maroon), var(--pink-dark));
+      color: white;
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        min-height: auto;
+      }
+
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-img img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">rein<span>.</span></div>
+        <ul class="nav-links">
+          <li><a href="#home">beranda</a></li>
+          <li><a href="#skills">keahlian</a></li>
+          <li><a href="#education">pendidikan</a></li>
+          <li><a href="#projects">proyek</a></li>
+          <li><a href="#certificates">sertifikat</a></li>
+          <li><a href="#contact">kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home">
+      <div class="container hero">
+        <div class="hero-text">
+          <h1>hi, i'm <span>rifa</span></h1>
+          <div class="typing"><span id="typing"></span></div>
+          <div class="badge"><i class="fas fa-map-marker-alt"></i> bogor <i class="fas fa-birthday-cake"></i> 27 apr
+            2009</div>
+          <p>a software development student at smk wikrama bogor. i love blending creativity with code to build things
+            that feel both functional and beautiful.</p>
+          <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> say hello</a>
+        </div>
+        <div class="hero-img animate-float">
+          <img src="img/mj.jpeg">
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">keahlian</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3><i class="fas fa-code"></i> hard skills</h3>
+            <div class="skill-tags"><span class="skill-tag">php/laravel</span><span
+                class="skill-tag">javascript</span><span class="skill-tag">react js</span><span
+                class="skill-tag">tailwind</span><span class="skill-tag">flutter</span><span
+                class="skill-tag">html/css</span><span class="skill-tag">mysql/mongodb</span><span
+                class="skill-tag">figma</span></div>
+          </div>
+          <div class="skill-card">
+            <h3><i class="fas fa-heart"></i> soft skills</h3>
+            <div class="skill-tags"><span class="skill-tag">problem solving</span><span
+                class="skill-tag">kreativitas</span><span class="skill-tag">kerja tim</span><span
+                class="skill-tag">manajemen waktu</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">pendidikan</h2>
+        <div class="edu-list">
+          <div class="edu-item">
+            <h3>ra alif</h3>
+            <div class="edu-meta"><span><i class="fas fa-calendar"></i> 2015 - 2021</span></div>
+          </div>
+          <div class="edu-item">
+            <h3>mts fathan mubina</h3>
+            <div class="edu-meta"><span><i class="fas fa-calendar"></i> 2021 - 2024</span></div>
+          </div>
+          <div class="edu-item">
+            <h3>smk wikrama bogor — pplg</h3>
+            <div class="edu-meta"><span><i class="fas fa-laptop-code"></i> rpl</span><span><i
+                  class="fas fa-calendar"></i> 2024 - 2027</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">proyek</h2>
+        <div class="project-grid">
+          <a href="https://github.com/bublewhile/growith-eecommercetanaman" target="_blank" class="project-card">
+            <div class="project-img"><img src="img/plants.png" alt="growith"></div>
+            <div class="project-info">
+              <h3>growith</h3>
+              <p>e-commerce tanaman dengan sistem rekomendasi</p>
+              <div class="project-techs"><span>react js</span><span>rest api</span></div>
+            </div>
+          </a>
+          <a href="https://github.com/bublewhile/-TheLanesborough" target="_blank" class="project-card">
+            <div class="project-img"><img src="img/hotel.png" alt="the lanesborough"></div>
+            <div class="project-info">
+              <h3>the lanesborough</h3>
+              <p>website reservasi hotel online</p>
+              <div class="project-techs"><span>laravel</span></div>
+            </div>
+          </a>
+          <div class="project-card">
+            <div class="project-img"><img src="img/tixid.png" alt="tixid"></div>
+            <div class="project-info">
+              <h3>tixid</h3>
+              <p>platform pemesanan tiket bioskop</p>
+              <div class="project-techs"><span>react</span><span>leaflet</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <div class="container">
+        <h2 class="section-title">sertifikat</h2>
+        <div class="cert-grid" id="certGrid">
+          <div class="cert-card"><img src="img/belajar dasar git dan github.png">
+            <h4>belajar dasar git dan github</h4>
+            <p>dicoding</p>
+          </div>
+          <div class="cert-card"><img src="img/introduction.png">
+            <h4>introduction to financial literacy</h4>
+            <p>dicoding</p>
+          </div>
+          <div class="cert-card"><img src="img/belajar pemrograman js.png">
+            <h4>belajar dasar pemrograman javascript</h4>
+            <p>dicoding</p>
+          </div>
+          <div class="cert-card cert-hidden"><img src="img/belajar dasar pemrograman web.png">
+            <h4>belajar dasar pemrograman web</h4>
+            <p>dicoding</p>
+          </div>
+          <div class="cert-card cert-hidden"><img src="img/memulai pemrograman.png">
+            <h4>memulai dasar pemrograman</h4>
+            <p>dicoding</p>
+          </div>
+          <div class="cert-card cert-hidden"><img src="img/pengenalan logika.png">
+            <h4>pengenalan logika pemrograman</h4>
+            <p>dicoding</p>
+          </div>
+          <div class="cert-card cert-hidden"><img src="img/ux writing.png">
+            <h4>ux writing introduction</h4>
+            <p>myskill</p>
+          </div>
+          <div class="cert-card cert-hidden"><img src="img/wordpress intoduction.png">
+            <h4>wordpress introduction</h4>
+            <p>myskill</p>
+          </div>
+          <div class="cert-card cert-hidden"><img src="img/igdx career - gamedev.png">
+            <h4>igdx career seminar</h4>
+            <p>kominfo</p>
+          </div>
+          <div class="cert-card cert-hidden"><img src="img/k3.png">
+            <h4>keselamatan dan kesehatan kerja</h4>
+            <p>ilo</p>
+          </div>
+        </div>
+        <div style="text-align:center"><button id="viewMoreBtn" class="view-btn">view more</button></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">hubungi saya</h2>
+        <div class="form-container">
+          <form id="contactForm">
+            <div class="form-group"><label>nama lengkap</label><input type="text" id="name" required></div>
+            <div class="form-group"><label>email</label><input type="email" id="email" required></div>
+            <div class="form-group"><label>pesan</label><textarea id="message" rows="4"></textarea></div>
+            <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> kirim pesan</button>
+            <div id="formStatus" style="margin-top:20px; text-align:center;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="socials">
+        <a href="mailto:blubieewops@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://instagram.com/rein_portofolio"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>© 2026 rifa nur fadila · all rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // typing animation
+    const roles = ["frontend dev", "ui/ux enthusiast", "web developer"];
+    let r = 0, i = 0, del = false;
+    const el = document.getElementById("typing");
+    function type() {
+      let cur = roles[r];
+      if (!del) {
+        el.innerHTML = cur.substring(0, i + 1);
+        i++;
+        if (i === cur.length) { del = true; setTimeout(type, 1500); return; }
+      } else {
+        el.innerHTML = cur.substring(0, i - 1);
+        i--;
+        if (i === 0) { del = false; r = (r + 1) % roles.length; }
+      }
+      setTimeout(type, del ? 60 : 100);
+    }
+    type();
+
+    // toggle certificates
+    let exp = false;
+    document.getElementById("viewMoreBtn").onclick = () => {
+      let h = document.querySelectorAll(".cert-hidden");
+      if (!exp) { h.forEach(c => c.style.display = "block"); exp = true; }
+      else { h.forEach(c => c.style.display = "none"); exp = false; }
+    };
+
+    // form handling
+    document.getElementById("contactForm").onsubmit = (e) => {
+      e.preventDefault();
+      let n = document.getElementById("name").value.trim();
+      let em = document.getElementById("email").value.trim();
+      let s = document.getElementById("formStatus");
+      if (!n || !em) { s.innerHTML = '<span style="color:#d4a0a5;">💕 nama dan email wajib diisi</span>'; return; }
+      if (!em.includes("@")) { s.innerHTML = '<span style="color:#d4a0a5;">💕 email tidak valid</span>'; return; }
+      s.innerHTML = '<span style="color:#e8b4b8;">✨ terima kasih, pesanmu sudah terkirim!</span>';
+      e.target.reset();
+      setTimeout(() => s.innerHTML = "", 3000);
+    };
+
+    // scroll animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.skill-card, .edu-item, .project-card, .cert-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>
